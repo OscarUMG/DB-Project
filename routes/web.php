@@ -3,6 +3,7 @@
 use App\Http\Controllers\CatedraticoController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\TesoreriaController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,8 @@ Route::get('/logout', [SessionsController::class, 'destroy'])->middleware('auth'
 Route::get('/catedratico', [CatedraticoController::class, 'index'])->middleware('auth.catedratico')->name('catedratico.index');
 Route::get('/catedratico/ingresar-notas/{curso_id}', [CatedraticoController::class, 'notas'])->middleware('auth.catedratico')->name('catedratico.ingresar_notas');
 Route::post('/catedratico/store', [CatedraticoController::class, 'store'])->middleware('auth.catedratico')->name('catedratico.store');
-// Route::get('/catedratico/ingresar-notas', [CatedraticoController::class, 'notas'])->middleware('auth.catedratico')->name('catedratico.ingresar_notas');
+
+//Rutas Tesoreria
+Route::get('/tesoreria', [TesoreriaController::class, 'index'])->middleware('auth.tesoreria')->name('tesoreria.index');
+Route::get('/tesoreria/ingresar-pago/', [TesoreriaController::class, 'pago'])->middleware('auth.tesoreria')->name('tesoreria.pago');
+Route::post('/tesoreria/store', [TesoreriaController::class, 'store'])->middleware('auth.tesoreria')->name('tesoreria.store');

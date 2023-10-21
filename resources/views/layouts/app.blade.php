@@ -28,7 +28,7 @@
 
                         @if (auth()->user()->id_rol == 3)
                             <a href="{{ url('/') }}" class="text-gray-800 font-bold text-xl">UMG</a>
-                            <a href="#" class="text-gray-800 hover:text-blue-500 ml-6">Registro de pagos de estudiantes</a>
+                            <a href="{{ route('tesoreria.pago') }}" class="text-gray-800 hover:text-blue-500 ml-6">Registrar pago del estudiante</a>
                         @endif
                     </nav>
                 </div>

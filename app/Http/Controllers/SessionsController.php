@@ -21,6 +21,8 @@ class SessionsController extends Controller
         if(auth()->check()){
             if(auth()->user()->id_rol == 2){
                 return redirect()->route('catedratico.index');
+            }else if(auth()->user()->id_rol == 3){
+                return redirect()->route('tesoreria.index');
             }
         }
         return redirect()->to('/');
