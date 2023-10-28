@@ -4,7 +4,7 @@
     
 @section('body')
 <div class="py-8 px-4 mx-auto max-w-2xl lg:py-20">
-    <form action="{{ route('catedratico.store') }}" method="POST" class="bg-white rounded-lg shadow-lg p-6">
+    <form action="{{ route('nota.store') }}" method="POST" class="bg-white rounded-lg shadow-lg p-6">
         @csrf
         <h2 class="mb-4 text-xl font-medium text-slate-700">Nota</h2>
 

@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AsignacionCatCursoController;
+use App\Http\Controllers\AsignacionCursoController;
 use App\Http\Controllers\CatedraticoController;
+use App\Http\Controllers\InscripcionController;
+use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\TesoreriaController;
@@ -34,11 +38,32 @@ Route::post('/login', [SessionsController::class, 'store'])->name('login.store')
 Route::get('/logout', [SessionsController::class, 'destroy'])->middleware('auth')->name('login.destroy');
 
 //Rutas catedratico
-Route::get('/catedratico', [CatedraticoController::class, 'index'])->middleware('auth.catedratico')->name('catedratico.index');
-Route::get('/catedratico/ingresar-notas/{curso_id}', [CatedraticoController::class, 'notas'])->middleware('auth.catedratico')->name('catedratico.ingresar_notas');
-Route::post('/catedratico/store', [CatedraticoController::class, 'store'])->middleware('auth.catedratico')->name('catedratico.store');
+Route::get('/catedratico', [NotaController::class, 'index'])->middleware('auth.catedratico')->name('nota.index');
+Route::get('/catedratico/ingresar-notas/{curso_id}', [NotaController::class, 'notas'])->middleware('auth.catedratico')->name('nota.create');
+Route::post('/catedratico/nota/store', [NotaController::class, 'store'])->middleware('auth.catedratico')->name('nota.store');
 
 //Rutas Tesoreria
 Route::get('/tesoreria', [TesoreriaController::class, 'index'])->middleware('auth.tesoreria')->name('tesoreria.index');
-Route::get('/tesoreria/ingresar-pago/', [TesoreriaController::class, 'pago'])->middleware('auth.tesoreria')->name('tesoreria.pago');
+Route::get('/tesoreria/ingresar-pago', [TesoreriaController::class, 'pago'])->middleware('auth.tesoreria')->name('tesoreria.pago');
 Route::post('/tesoreria/store', [TesoreriaController::class, 'store'])->middleware('auth.tesoreria')->name('tesoreria.store');
+
+//Rutas Secretaria
+Route::get('/inscripcion', [InscripcionController::class, 'index'])->middleware('auth.secretaria')->name('inscripcion.index');
+Route::get('/inscripcion/crear', [InscripcionController::class, 'inscripcion'])->middleware('auth.secretaria')->name('inscripcion.create');
+Route::post('/inscripcion/store', [InscripcionController::class, 'store'])->middleware('auth.secretaria')->name('inscripcion.store');
+
+//Rutas tesoreria
+Route::get('/asignar-curso-estudiante', [AsignacionCursoController::class, 'index'])->middleware('auth.secretaria')->name('asignacion-estudiante.index');
+Route::get('/asignar-curso-estudiante/crear', [AsignacionCursoController::class, 'asignacion'])->middleware('auth.secretaria')->name('asignacion-estudiante.create');
+Route::get('/asignar-curso-estudiante/buscar', [AsignacionCursoController::class, 'buscar'])->middleware('auth.secretaria')->name('asignacion-estudiante.buscar');
+Route::post('/asignar-curso-estudiante/store', [AsignacionCursoController::class, 'store'])->middleware('auth.secretaria')->name('asignacion-estudiante.store');
+
+//Rutas Secretaria
+Route::get('/asignar-curso-catedratico', [AsignacionCatCursoController::class, 'index'])->middleware('auth.secretaria')->name('asignacion-catedratico.index');
+
+Route::get('/catedratico/crear', [CatedraticoController::class, 'catedratico'])->middleware('auth.secretaria')->name('catedratico.create');
+Route::post('/catedratico/store', [CatedraticoController::class, 'store'])->middleware('auth.secretaria')->name('catedratico.store');
+
+Route::get('/asignar-curso-catedratico/crear', [AsignacionCatCursoController::class, 'asignacion'])->middleware('auth.secretaria')->name('asignacion-catedratico.create');
+Route::get('/asignar-curso-catedratico/buscar', [AsignacionCatCursoController::class, 'buscar'])->middleware('auth.secretaria')->name('asignacion-catedratico.buscar');
+Route::post('/asignar-curso-catedratico/store', [AsignacionCatCursoController::class, 'store'])->middleware('auth.secretaria')->name('asignacion-catedratico.store');

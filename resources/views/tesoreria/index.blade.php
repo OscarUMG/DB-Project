@@ -59,8 +59,11 @@
                     @forelse ($pagos as $detail)
                         <tr class="bg-white">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{ $detail->nombre_estudiante }}
+                                {{ $detail->no_boleta }}
                             </th>
+                            <td class="px-6 py-4">
+                                {{ $detail->nombre_estudiante }}
+                            </td>
                             <td class="px-6 py-4">
                                 {{ $detail->semestre }}
                             </td>

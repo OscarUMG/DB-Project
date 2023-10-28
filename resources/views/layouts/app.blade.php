@@ -15,19 +15,18 @@
                     {{-- <a href="{{ url('/') }}" class="text-gray-800 font-bold text-xl">UMG</a> --}}
                     <nav class="mx-6">
                         @if (auth()->user()->id_rol == 1)
-                            <a href="{{ url('/') }}" class="text-gray-800 font-bold text-xl">UMG</a>
-                            <a href="#" class="text-gray-800 hover:text-blue-500">inscripción de Estudiantes</a>
-                            <a href="#" class="text-gray-800 hover:text-blue-500 ml-6"> Asignación de Cursos</a>
-                            <a href="#" class="text-gray-800 hover:text-blue-500 ml-6">Asignación de catedráticos al curso</a>
+                            <a href="{{ route('inscripcion.index') }}" class="text-gray-800 font-bold text-xl">UMG</a>
+                            <a href="{{ route('inscripcion.index') }}" class="text-gray-800 hover:text-blue-500 ml-6">inscripción de Estudiantes</a>
+                            <a href="{{ route('asignacion-estudiante.index') }}" class="text-gray-800 hover:text-blue-500 ml-6"> Asignación de Cursos</a>
+                            <a href="{{ route('asignacion-catedratico.index') }}" class="text-gray-800 hover:text-blue-500 ml-6">Asignación de catedráticos al curso</a>
                         @endif
                         
                         @if (auth()->user()->id_rol == 2)
-                            <a href="{{ route('catedratico.index') }}" class="text-gray-800 font-bold text-xl">UMG</a>
-                            {{-- <a href="{{ route('catedratico.ingresar_notas') }}" class="text-gray-800 hover:text-blue-500 ml-6">Ingreso de notas</a> --}}
+                            <a href="{{ route('nota.index') }}" class="text-gray-800 font-bold text-xl">UMG</a>
                         @endif
 
                         @if (auth()->user()->id_rol == 3)
-                            <a href="{{ url('/') }}" class="text-gray-800 font-bold text-xl">UMG</a>
+                            <a href="{{ route('tesoreria.index') }}" class="text-gray-800 font-bold text-xl">UMG</a>
                             <a href="{{ route('tesoreria.pago') }}" class="text-gray-800 hover:text-blue-500 ml-6">Registrar pago del estudiante</a>
                         @endif
                     </nav>

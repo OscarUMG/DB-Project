@@ -30,7 +30,7 @@
     <div class="container mx-auto mt-5">
         <div class="flex flex-wrap -mx-2">
             @foreach ($curso as $cursos)
-                <a href="{{ route('catedratico.ingresar_notas', ['curso_id' => $cursos->curso_id]) }}" class="w-full md:w-1/2 lg:w-1/4 px-2 mb-4 block">
+                <a href="{{ route('nota.create', ['curso_id' => $cursos->curso_id]) }}" class="w-full md:w-1/2 lg:w-1/4 px-2 mb-4 block">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
                         <img src="https://via.placeholder.com/150" alt="Imagen 1" class="w-full mb-4">
                         <h2 class="text-xl font-bold mb-2">{{ $cursos->curso }}</h2>
