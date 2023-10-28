@@ -25,6 +25,8 @@ class SessionsController extends Controller
                 return redirect()->route('nota.index');
             }else if(auth()->user()->id_rol == 3){
                 return redirect()->route('tesoreria.index');
+            }else if(auth()->user()->id_rol == 4){
+                return redirect()->route('estudiante.index');
             }
         }
         return redirect()->to('/');

@@ -41,15 +41,25 @@ class AsignacionCursoController extends Controller
     public function store(Request $request){
         try {
             $request->validate([
-                'id_pago' => 'required|unique:asignacion_curso,id_pago',
+                'id_pago' => 'required',
                 'id_curso' => 'required',
                 'id_user' => 'required',
             ]);
 
-            AsignacionCurso::create($request->only('id_pago', 'id_curso', 'id_user'));
+            $id_pago = $request->input('id_pago');
 
-            Session::flash('mensaje', 'Registro creado con éxito!');
-            return redirect()->route('asignacion-estudiante.index');
+            $count = DB::select("SELECT COUNT(*) as count FROM asignacion_curso WHERE id_pago = ?", [$id_pago])[0]->count;
+
+            if ($count >= 5) {
+                Session::flash('mensaje', 'Error: Solo se puede asignar a 5 cursos.');
+                return redirect()->back()->withInput();
+            }else{
+                AsignacionCurso::create($request->only('id_pago', 'id_curso', 'id_user'));
+    
+                Session::flash('mensaje', 'Registro creado con éxito!');
+                return redirect()->route('asignacion-estudiante.index');
+            }
+
 
         } catch (\Exception $e) {
             Session::flash('mensaje', 'Error al crear el registro: ' . $e->getMessage());

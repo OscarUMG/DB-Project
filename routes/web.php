@@ -3,6 +3,7 @@
 use App\Http\Controllers\AsignacionCatCursoController;
 use App\Http\Controllers\AsignacionCursoController;
 use App\Http\Controllers\CatedraticoController;
+use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RegisterController;
@@ -67,3 +68,7 @@ Route::post('/catedratico/store', [CatedraticoController::class, 'store'])->midd
 Route::get('/asignar-curso-catedratico/crear', [AsignacionCatCursoController::class, 'asignacion'])->middleware('auth.secretaria')->name('asignacion-catedratico.create');
 Route::get('/asignar-curso-catedratico/buscar', [AsignacionCatCursoController::class, 'buscar'])->middleware('auth.secretaria')->name('asignacion-catedratico.buscar');
 Route::post('/asignar-curso-catedratico/store', [AsignacionCatCursoController::class, 'store'])->middleware('auth.secretaria')->name('asignacion-catedratico.store');
+
+//Rutas Estudiante
+Route::get('/estudiante', [EstudianteController::class, 'index'])->middleware('auth.estudiante')->name('estudiante.index');
+Route::get('/estudiante/ver-notas/{curso_id}/{id_estudiante}', [EstudianteController::class, 'notas'])->middleware('auth.estudiante')->name('estudiante.view');

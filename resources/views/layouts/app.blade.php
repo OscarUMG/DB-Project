@@ -41,7 +41,7 @@
             </div>
             <div class="flex items-center">
                 <a class="bg-blue-500 text-white hover:bg-blue-700 py-2 px-4 rounded mr-4" href="{{ route('login.index') }}">{{ __('Login') }}</a>
-                <a class="bg-blue-500 text-white hover:bg-blue-700 py-2 px-4 rounded" href="{{ route('register.index') }}">{{ __('Registro') }}</a>
+                {{-- <a class="bg-blue-500 text-white hover:bg-blue-700 py-2 px-4 rounded" href="{{ route('register.index') }}">{{ __('Registro') }}</a> --}}
             </div>
             @endif
         </div>
