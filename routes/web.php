@@ -6,6 +6,7 @@ use App\Http\Controllers\CatedraticoController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\NotaController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\TesoreriaController;
@@ -72,3 +73,6 @@ Route::post('/asignar-curso-catedratico/store', [AsignacionCatCursoController::c
 //Rutas Estudiante
 Route::get('/estudiante', [EstudianteController::class, 'index'])->middleware('auth.estudiante')->name('estudiante.index');
 Route::get('/estudiante/ver-notas/{curso_id}/{id_estudiante}', [EstudianteController::class, 'notas'])->middleware('auth.estudiante')->name('estudiante.view');
+
+//Rutas pdf
+Route::get('/tesoreria/pdf/{no_boleta}', [PdfController::class, 'pdfPago'])->middleware('auth.tesoreria')->name('tesoreria.pdfPago');

@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'Tesoreria')
-    
+
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+@endsection
+
 @section('body')
 <div class="py-8 px-16 mx-auto lg:py-20">
     <h1 class="text-3xl font-bold">
@@ -47,14 +51,17 @@
                         <th scope="col" class="px-6 py-3">
                             Año
                         </th>
-                        <th scope="col" class="px-6 py-3 rounded-r-lg">
+                        <th scope="col" class="px-6 py-3">
                             Tipo de pago
                         </th>
-                        <th scope="col" class="px-6 py-3 rounded-r-lg">
+                        <th scope="col" class="px-6 py-3">
                             Metodo de pago
                         </th>
-                        <th scope="col" class="px-6 py-3 rounded-r-lg">
+                        <th scope="col" class="px-6 py-3">
                             Monto
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            PDF
                         </th>
                     </tr>
                 </thead>
@@ -84,6 +91,11 @@
                             </td>
                             <td class="px-6 py-4">
                                Q. {{ $detail->monto }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="{{ route('tesoreria.pdfPago', ['no_boleta' => $detail->no_boleta]) }}" target="_blank">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </a>
                             </td>
                         </tr>
                     @empty
