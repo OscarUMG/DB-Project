@@ -2,10 +2,6 @@
 
 @section('title', 'Tesoreria')
 
-@section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-@endsection
-
 @section('body')
 <div class="py-8 px-16 mx-auto lg:py-20">
     <h1 class="text-3xl font-bold">
